@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Downloader - Гибкий и Минималистичный</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📥 Media Downloader</h1>
+            <div class="theme-switcher">
+                <button id="theme-light">☀️ Светлая</button>
+                <button id="theme-dark">🌙 Темная</button>
+                <button id="theme-aqua">💧 Аква</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="downloader-section">
+                <h2>Скачайте контент с любого сервиса</h2>
+                <div class="input-group">
+                    <input type="text" id="url-input" placeholder="Вставьте ссылку сюда (YouTube, TikTok, VK, Spotify, etc.)">
+                    <div class="action-buttons">
+                        <button id="download-video" data-type="video">Скачать Видео</button>
+                        <button id="download-audio" data-type="audio">Скачать Музыку</button>
+                    </div>
+                </div>
+                <p id="message-area" class="message"></p>
+                <div id="results-area" class="results-area">
+                    </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Media Downloader. Минимализм и Гибкость.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
