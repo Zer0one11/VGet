@@ -2,38 +2,53 @@
 /* 🎨 Основные Цветовые Переменные (Темы) */
 /* ========================================================= */
 
-/* ☀️ Светлая Тема (По умолчанию) */
+/* 🌙 Темная Фиолетовая Тема (По умолчанию, как на скриншоте) */
 :root {
-    --color-bg-primary: #f8f8f8;
-    --color-bg-secondary: #ffffff;
-    --color-text-primary: #1c1c1c;
-    --color-text-secondary: #5a5a5a;
-    --color-accent: #007bff;
-    --color-accent-hover: #0056b3;
-    --color-border: #e0e0e0;
+    --color-bg-primary: #1A1A2E; /* Очень темный фиолетово-синий */
+    --color-bg-secondary: #2C2C4A; /* Чуть светлее для карточек/хедеров */
+    --color-text-primary: #E0E0E0; /* Светлый текст */
+    --color-text-secondary: #B0B0C0; /* Второстепенный текст */
+    --color-accent-purple: #9B59B6; /* Яркий фиолетовый акцент */
+    --color-accent-purple-hover: #8e44ad; /* Темнее при наведении */
+    --color-accent-green: #2ECC71; /* Зеленый акцент для "Showcase" */
+    --color-border: #4A4A6A; /* Границы */
+    --color-input-bg: #3A3A5E; /* Фон для инпутов */
+
+    /* Дополнительные цвета для кнопок тем */
+    --theme-blue: #3498DB;
+    --theme-yellow: #F1C40F;
+    --theme-green: #27AE60;
+    --theme-light: #ECF0F1;
+    --theme-dark: #34495E;
 }
 
-/* 🌙 Темная Тема */
-body[data-theme='dark'] {
-    --color-bg-primary: #121212;
-    --color-bg-secondary: #1e1e1e;
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #b0b0b0;
-    --color-accent: #90caf9;
-    --color-accent-hover: #64b5f6;
-    --color-border: #333333;
-}
-
-/* 💧 Аква Тема */
-body[data-theme='aqua'] {
-    --color-bg-primary: #e0f7fa;
+/* Переопределение для конкретных тем, если будут использоваться */
+body[data-theme='light'] {
+    --color-bg-primary: #f0f2f5;
     --color-bg-secondary: #ffffff;
-    --color-text-primary: #004d40;
-    --color-text-secondary: #00897b;
-    --color-accent: #00bcd4;
-    --color-accent-hover: #0097a7;
-    --color-border: #b2ebf2;
+    --color-text-primary: #333333;
+    --color-text-secondary: #666666;
+    --color-accent-purple: #8e44ad;
+    --color-accent-purple-hover: #9B59B6;
+    --color-accent-green: #2ECC71;
+    --color-border: #dddddd;
+    --color-input-bg: #ffffff;
 }
+/* Остальные темы будут использовать свои переменные */
+/* Пример:
+body[data-theme='blue'] {
+    --color-bg-primary: #EBF5FB;
+    --color-bg-secondary: #D4E6F1;
+    --color-text-primary: #2C3E50;
+    --color-text-secondary: #34495E;
+    --color-accent-purple: #2C3E50;
+    --color-accent-purple-hover: #34495E;
+    --color-accent-green: #28B463;
+    --color-border: #AAB7B8;
+    --color-input-bg: #EBF5FB;
+}
+*/
+
 
 /* ========================================================= */
 /* 💫 Общие Стили */
@@ -46,160 +61,292 @@ body[data-theme='aqua'] {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Более современный шрифт */
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.4s ease, color 0.4s ease;
     line-height: 1.6;
+    min-height: 100vh; /* Занимает всю высоту */
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 960px; /* Чуть шире */
     margin: 0 auto;
     padding: 0 20px;
 }
 
 header {
     background-color: var(--color-bg-secondary);
-    padding: 20px 0;
+    padding: 25px 0;
     border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Для адаптивности */
 }
 
 h1 {
-    font-size: 1.8rem;
-    color: var(--color-accent);
+    font-size: 2.2rem; /* Крупнее */
+    font-weight: 700; /* Жирнее */
+    color: var(--color-accent-purple);
+    letter-spacing: 1px;
 }
 
-/* Свитчер Тем */
-.theme-switcher button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    border: 1px solid var(--color-accent);
-    background-color: transparent;
-    color: var(--color-accent);
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+/* Стили для свитчера тем */
+.theme-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Промежуток между кнопками */
+    margin-top: 10px; /* Отступ сверху при обтекании */
 }
+
+.theme-switcher button {
+    padding: 10px 18px;
+    border: none;
+    background-color: var(--color-bg-primary); /* Фон кнопок тем */
+    color: var(--color-text-primary);
+    cursor: pointer;
+    border-radius: 8px; /* Более мягкие углы */
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для каждой кнопки темы по отдельности */
+#theme-light { background-color: var(--theme-light); color: var(--color-text-primary); }
+#theme-dark { background-color: var(--theme-dark); color: var(--color-text-primary); }
+#theme-aqua { background-color: var(--theme-blue); color: var(--color-bg-primary); } /* Использование blue для aqua */
+#theme-blue { background-color: var(--theme-blue); color: var(--color-bg-primary); }
+#theme-yellow { background-color: var(--theme-yellow); color: var(--color-bg-primary); }
+#theme-green-btn { background-color: var(--theme-green); color: var(--color-bg-primary); } /* Переименована, чтобы не конфликтовать с var(--color-accent-green) */
+#theme-purple { background-color: var(--color-accent-purple); color: var(--color-bg-primary); }
+
 
 .theme-switcher button:hover {
-    background-color: var(--color-accent-hover);
-    color: var(--color-bg-secondary);
+    transform: translateY(-2px); /* Эффект при наведении */
+    opacity: 0.9;
 }
+/* Активная кнопка темы */
+.theme-switcher button.active {
+    border: 2px solid var(--color-accent-purple); /* Обводка для активной темы */
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.4);
+}
+
 
 /* Основной Контент */
 main {
+    flex-grow: 1; /* Занимает все доступное пространство */
     padding: 40px 0;
 }
 
 .downloader-section {
     background-color: var(--color-bg-secondary);
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px; /* Более закругленные углы */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Более выраженная тень */
 }
 
 .downloader-section h2 {
-    margin-bottom: 20px;
-    font-weight: 400;
+    margin-bottom: 25px;
+    font-weight: 600; /* Полужирный */
+    font-size: 1.6rem;
     color: var(--color-text-primary);
+    text-align: center;
 }
 
 /* Форма Ввода */
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px; /* Увеличенный промежуток */
 }
 
 #url-input {
     width: 100%;
-    padding: 15px;
-    font-size: 1rem;
+    padding: 18px;
+    font-size: 1.1rem; /* Крупнее */
     border: 2px solid var(--color-border);
-    border-radius: 5px;
-    background-color: var(--color-bg-primary);
+    border-radius: 8px;
+    background-color: var(--color-input-bg);
     color: var(--color-text-primary);
     transition: border-color 0.3s, background-color 0.3s;
 }
 
+#url-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
 #url-input:focus {
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-purple);
     outline: none;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-primary); /* Чуть темнее при фокусе */
 }
 
 .action-buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .action-buttons button {
     flex-grow: 1;
-    padding: 15px 20px;
-    font-size: 1rem;
+    padding: 18px 25px;
+    font-size: 1.1rem;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s, opacity 0.2s;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    text-transform: uppercase; /* Верхний регистр */
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #download-video {
-    background-color: var(--color-accent);
-    color: var(--color-bg-secondary);
+    background-color: var(--color-accent-purple);
+    color: #FFFFFF;
 }
 
 #download-audio {
-    background-color: var(--color-text-secondary); /* Использование второстепенного цвета для разнообразия */
-    color: var(--color-bg-secondary);
+    background-color: var(--color-accent-green); /* Используем зеленый для аудио */
+    color: #FFFFFF;
 }
 
 .action-buttons button:hover {
-    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Сообщения */
 .message {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: rgba(0, 123, 255, 0.1); /* Легкий фон для сообщений */
-    color: var(--color-accent);
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 8px;
     text-align: center;
+    font-weight: 500;
 }
+
+.message-info {
+    background-color: rgba(155, 89, 182, 0.15); /* Фиолетовый оттенок */
+    color: var(--color-accent-purple);
+}
+
+.message-success {
+    background-color: rgba(46, 204, 113, 0.15); /* Зеленый оттенок */
+    color: var(--color-accent-green);
+}
+
+.message-error {
+    background-color: rgba(231, 76, 60, 0.15); /* Красный оттенок */
+    color: #E74C3C;
+}
+
+
+/* Стили для результатов скачивания (как на скриншоте) */
+.results-area {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.download-item {
+    background-color: var(--color-bg-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--color-border);
+}
+
+.download-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-accent-purple);
+}
+
+.download-item h3 span { /* Для нумерации 1. */
+    color: var(--color-text-primary);
+    margin-right: 10px;
+}
+
+.download-item p {
+    margin-bottom: 5px;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.download-item p strong {
+    color: var(--color-text-primary);
+}
+
+.download-item a.showcase-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--color-accent-green);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.download-item a.showcase-link:hover {
+    color: var(--color-accent-purple);
+}
+
 
 /* Подвал */
 footer {
-    padding: 20px 0;
+    padding: 25px 0;
     text-align: center;
     border-top: 1px solid var(--color-border);
     background-color: var(--color-bg-secondary);
     color: var(--color-text-secondary);
     font-size: 0.9rem;
+    margin-top: auto; /* Прижимает футер к низу */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Медиа-запросы для адаптивности */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     header .container {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
+    }
+    .theme-switcher {
+        justify-content: center;
     }
     .action-buttons {
         flex-direction: column;
     }
-    .theme-switcher {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    h1 {
+        font-size: 1.8rem;
     }
+    .downloader-section h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
     .theme-switcher button {
-        margin: 5px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .downloader-section {
+        padding: 20px;
+    }
+    #url-input, .action-buttons button {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    .download-item h3 {
+        font-size: 1.3rem;
     }
 }
